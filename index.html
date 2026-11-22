@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>磁力联盟 - 官方视频门户 | 原创精品内容生态平台</title>
+<meta name="description" content="磁力联盟官方网站，专注原创高清视频内容的品牌视频门户，汇聚磁力联盟创作者社区、精品专题与幕后故事，持续运营值得信赖的内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1c22'/%3E%3Cpath d='M24 18l20 14-20 14z' fill='%23ff5a3c'/%3E%3Ccircle cx='18' cy='32' r='4' fill='%235ce1c4'/%3E%3C/svg%3E">
+<style>
+:root{
+  --cl-root-bg:#14161b;
+  --cl-panel:#1e2129;
+  --cl-panel-2:#262a34;
+  --cl-line:#333845;
+  --cl-ink:#eef1f6;
+  --cl-ink-dim:#a6adbc;
+  --cl-neon:#ff5a3c;
+  --cl-neon-soft:rgba(255,90,60,.16);
+  --cl-mint:#5ce1c4;
+  --cl-mint-soft:rgba(92,225,196,.14);
+  --cl-radius:16px;
+  --cl-shadow:0 14px 40px rgba(0,0,0,.45);
+  --cl-sticky:118px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:var(--cl-sticky);}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 520px at 82% -8%, rgba(255,90,60,.14), transparent 60%),
+    radial-gradient(900px 480px at 8% 12%, rgba(92,225,196,.10), transparent 62%),
+    var(--cl-root-bg);
+  color:var(--cl-ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{margin:0 0 .5em;line-height:1.3;font-weight:800;letter-spacing:.3px;}
+p{margin:0 0 1em;}
+ul,ol{margin:0 0 1em;padding-left:1.2em;}
+button{font-family:inherit;cursor:pointer;}
+.cl-wrap{width:min(1180px,92vw);margin:0 auto;}
+
+/* ============ 吸顶区：公告条 + 页头 ============ */
+.cl-sticky-zone{
+  position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(14px);
+  background:rgba(20,22,27,.94);
+  border-bottom:1px solid var(--cl-line);
+}
+.cl-announce{
+  display:flex;align-items:center;gap:14px;
+  padding:8px 0;
+  font-size:13.5px;
+  border-bottom:1px dashed rgba(255,90,60,.35);
+  overflow:hidden;
+}
+.cl-announce-tag{
+  flex:0 0 auto;
+  background:var(--cl-neon);color:#fff;
+  font-weight:800;font-size:12px;
+  padding:2px 10px;border-radius:99px;
+  letter-spacing:1px;
+}
+.cl-announce-track{display:flex;gap:34px;flex-wrap:wrap;color:var(--cl-ink-dim);}
+.cl-announce-track b{color:var(--cl-mint);font-weight:700;}
+.cl-header{
+  display:flex;align-items:center;gap:22px;
+  padding:12px 0;
+  flex-wrap:wrap;
+}
+.cl-brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:20px;letter-spacing:1px;}
+.cl-brand-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--cl-neon),#ff9a6b);
+  display:grid;place-items:center;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08),0 8px 22px rgba(255,90,60,.4);
+}
+.cl-brand-mark svg{width:20px;height:20px;}
+.cl-brand small{display:block;font-size:11px;color:var(--cl-ink-dim);font-weight:500;letter-spacing:2px;}
+.cl-nav{display:flex;gap:4px;flex:1;flex-wrap:wrap;}
+.cl-nav a{
+  padding:7px 13px;border-radius:9px;font-size:14.5px;color:var(--cl-ink-dim);
+  transition:.22s;
+}
+.cl-nav a:hover{color:var(--cl-ink);background:var(--cl-panel-2);}
+.cl-head-tools{display:flex;align-items:center;gap:10px;}
+.cl-search{position:relative;}
+.cl-search input{
+  width:190px;
+  background:var(--cl-panel);border:1px solid var(--cl-line);color:var(--cl-ink);
+  border-radius:10px;padding:9px 14px 9px 34px;font-size:13.5px;outline:none;transition:.22s;
+}
+.cl-search input:focus{border-color:var(--cl-neon);width:220px;box-shadow:0 0 0 3px var(--cl-neon-soft);}
+.cl-search::before{
+  content:"⌕";position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  color:var(--cl-ink-dim);font-size:16px;pointer-events:none;
+}
+.cl-search-feedback{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:var(--cl-panel-2);border:1px solid var(--cl-line);border-radius:12px;
+  padding:10px 12px;font-size:13px;color:var(--cl-mint);
+  display:none;box-shadow:var(--cl-shadow);z-index:80;
+}
+.cl-search-feedback.is-on{display:block;}
+.cl-submit-btn{
+  background:linear-gradient(135deg,var(--cl-neon),#ff8558);
+  color:#fff;border:0;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:700;
+  transition:.22s;white-space:nowrap;
+}
+.cl-submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(255,90,60,.35);}
+.cl-burger{
+  display:none;background:var(--cl-panel);border:1px solid var(--cl-line);color:var(--cl-ink);
+  border-radius:10px;padding:8px 12px;font-size:16px;
+}
+
+/* ============ 首屏 ============ */
+.cl-hero{padding:52px 0 34px;}
+.cl-hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:44px;align-items:center;
+}
+.cl-hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:2px;color:var(--cl-mint);
+  border:1px solid rgba(92,225,196,.35);border-radius:99px;
+  padding:5px 14px;margin-bottom:20px;background:var(--cl-mint-soft);
+}
+.cl-hero h1{
+  font-size:clamp(38px,5.4vw,66px);
+  letter-spacing:2px;line-height:1.08;
+  background:linear-gradient(100deg,#fff 20%,#ffb49a 70%,var(--cl-neon) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:14px;
+}
+.cl-hero-slogan{font-size:19px;font-weight:700;color:var(--cl-ink);margin-bottom:14px;}
+.cl-hero-desc{color:var(--cl-ink-dim);font-size:15.5px;max-width:56ch;}
+.cl-hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 26px;}
+.cl-btn-primary{
+  background:var(--cl-neon);color:#fff;border:0;border-radius:12px;
+  padding:12px 24px;font-weight:800;font-size:15px;transition:.22s;
+  box-shadow:0 10px 26px rgba(255,90,60,.32);
+}
+.cl-btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(255,90,60,.4);}
+.cl-btn-ghost{
+  background:transparent;border:1px solid var(--cl-line);color:var(--cl-ink);
+  border-radius:12px;padding:12px 22px;font-weight:700;font-size:15px;transition:.22s;
+}
+.cl-btn-ghost:hover{border-color:var(--cl-mint);color:var(--cl-mint);}
+.cl-hero-stats{display:flex;gap:30px;flex-wrap:wrap;}
+.cl-stat b{display:block;font-size:26px;color:var(--cl-mint);letter-spacing:.5px;}
+.cl-stat span{font-size:12.5px;color:var(--cl-ink-dim);letter-spacing:1px;}
+.cl-hero-visual{position:relative;}
+.cl-hero-visual figure{
+  margin:0;border-radius:22px;overflow:hidden;
+  border:1px solid var(--cl-line);box-shadow:var(--cl-shadow);
+  background:var(--cl-panel);
+}
+.cl-hero-visual figcaption{
+  position:absolute;left:18px;bottom:18px;right:18px;
+  background:rgba(18,20,25,.82);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:12px 16px;font-size:13.5px;color:var(--cl-ink-dim);
+}
+.cl-hero-visual figcaption b{color:var(--cl-ink);display:block;font-size:15px;margin-bottom:2px;}
+
+/* ============ 通用区块 ============ */
+.cl-section{padding:52px 0;}
+.cl-section-head{margin-bottom:26px;max-width:70ch;}
+.cl-section-head h2{font-size:clamp(24px,3vw,34px);letter-spacing:1px;}
+.cl-section-head h2 em{font-style:normal;color:var(--cl-neon);}
+.cl-kicker{
+  display:inline-block;font-size:12px;letter-spacing:3px;color:var(--cl-mint);
+  text-transform:uppercase;margin-bottom:8px;
+}
+.cl-lead{color:var(--cl-ink-dim);font-size:15px;}
+
+/* 关键词解析 */
+.cl-insight{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:38px;align-items:start;}
+.cl-insight h3{font-size:19px;color:var(--cl-mint);margin-top:1.4em;}
+.cl-insight p{color:var(--cl-ink-dim);font-size:14.8px;}
+.cl-insight p strong{color:var(--cl-ink);}
+.cl-insight-card{
+  background:var(--cl-panel);border:1px solid var(--cl-line);border-radius:var(--cl-radius);
+  padding:22px;position:sticky;top:calc(var(--cl-sticky) + 14px);
+}
+.cl-insight-card h3{margin-top:0;color:var(--cl-ink);font-size:16px;}
+.cl-insight-card ul{list-style:none;padding:0;margin:0;}
+.cl-insight-card li{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:9px 0;border-bottom:1px dashed var(--cl-line);font-size:13.5px;color:var(--cl-ink-dim);
+}
+.cl-insight-card li:last-child{border-bottom:0;}
+.cl-insight-card li b{color:var(--cl-mint);font-weight:700;}
+
+/* 视频列表布局：一幅重点大图 + 文字列表 */
+.cl-feature-list{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:30px;}
+.cl-feature-card{
+  background:var(--cl-panel);border:1px solid var(--cl-line);border-radius:var(--cl-radius);
+  overflow:hidden;transition:.25s;
+}
+.cl-feature-card:hover{transform:translateY(-4px);border-color:rgba(255,90,60,.5);box-shadow:var(--cl-shadow);}
+.cl-feature-card img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+.cl-feature-body{padding:18px 20px;}
+.cl-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;}
+.cl-tag{
+  font-size:11.5px;letter-spacing:.5px;padding:3px 10px;border-radius:99px;
+  background:var(--cl-neon-soft);color:var(--cl-neon);border:1px solid rgba(255,90,60,.3);
+}
+.cl-tag.is-mint{background:var(--cl-mint-soft);color:var(--cl-mint);border-color:rgba(92,225,196,.3);}
+.cl-feature-card h3{font-size:19px;margin-bottom:8px;}
+.cl-meta{font-size:12.5px;color:var(--cl-ink-dim);display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;}
+.cl-video-list{display:flex;flex-direction:column;gap:0;}
+.cl-video-item{
+  display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--cl-line);
+  align-items:flex-start;
+}
+.cl-video-item:first-child{padding-top:0;}
+.cl-video-no{
+  flex:0 0 auto;width:34px;height:34px;border-radius:10px;
+  background:var(--cl-panel-2);border:1px solid var(--cl-line);
+  display:grid;place-items:center;font-weight:800;color:var(--cl-mint);font-size:14px;
+}
+.cl-video-item h3{font-size:16px;margin-bottom:4px;}
+.cl-video-item p{font-size:13.5px;color:var(--cl-ink-dim);margin-bottom:6px;}
+.cl-video-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.cl-chip-btn{
+  background:var(--cl-panel-2);border:1px solid var(--cl-line);color:var(--cl-ink-dim);
+  border-radius:99px;padding:4px 12px;font-size:12px;transition:.2s;display:inline-flex;align-items:center;gap:5px;
+}
+.cl-chip-btn:hover{color:var(--cl-ink);border-color:var(--cl-mint);}
+.cl-chip-btn.is-liked{color:var(--cl-neon);border-color:rgba(255,90,60,.55);background:var(--cl-neon-soft);}
+.cl-chip-btn.is-saved{color:var(--cl-mint);border-color:rgba(92,225,196,.55);background:var(--cl-mint-soft);}
+
+/* 专题 */
+.cl-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+.cl-topic{
+  background:linear-gradient(160deg,var(--cl-panel),var(--cl-panel-2));
+  border:1px solid var(--cl-line);border-radius:var(--cl-radius);padding:22px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.cl-topic-status{
+  align-self:flex-start;font-size:11.5px;padding:3px 10px;border-radius:99px;
+  background:var(--cl-mint-soft);color:var(--cl-mint);letter-spacing:.5px;
+}
+.cl-topic h3{font-size:18px;margin:0;}
+.cl-topic ol{padding-left:1.1em;margin:4px 0 0;font-size:13.8px;color:var(--cl-ink-dim);}
+.cl-topic ol li{padding:3px 0;}
+
+/* 创作者 — 双列简介 */
+.cl-authors{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
+.cl-author{
+  display:flex;gap:16px;background:var(--cl-panel);border:1px solid var(--cl-line);
+  border-radius:var(--cl-radius);padding:18px;transition:.25s;
+}
+.cl-author:hover{border-color:rgba(92,225,196,.45);transform:translateY(-3px);}
+.cl-avatar{
+  flex:0 0 auto;width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;font-weight:900;font-size:21px;color:#0f1115;
+}
+.cl-author-main{min-width:0;}
+.cl-author-main h3{font-size:16.5px;margin-bottom:2px;}
+.cl-author-field{font-size:12.5px;color:var(--cl-mint);margin-bottom:6px;}
+.cl-author-main p{font-size:13.3px;color:var(--cl-ink-dim);margin-bottom:8px;}
+.cl-author-nums{display:flex;gap:16px;font-size:12.5px;color:var(--cl-ink-dim);}
+.cl-author-nums b{color:var(--cl-ink);}
+.cl-author-more{
+  margin-top:10px;background:transparent;border:1px solid var(--cl-line);color:var(--cl-ink-dim);
+  border-radius:8px;padding:5px 12px;font-size:12.5px;transition:.2s;
+}
+.cl-author-more:hover{color:var(--cl-mint);border-color:var(--cl-mint);}
+
+/* 用户评价 — 双列短评 */
+.cl-comments{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+.cl-comment{
+  background:var(--cl-panel);border-left:3px solid var(--cl-neon);
+  border-radius:0 var(--cl-radius) var(--cl-radius) 0;padding:16px 18px;
+}
+.cl-comment:nth-child(even){border-left-color:var(--cl-mint);}
+.cl-comment p{font-size:14px;color:var(--cl-ink-dim);margin-bottom:10px;}
+.cl-comment-who{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--cl-ink-dim);}
+.cl-dot{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:12px;font-weight:800;color:#0f1115;flex:0 0 auto;
+}
+.cl-stars{color:var(--cl-neon);letter-spacing:2px;font-size:12.5px;}
+
+/* 图文索引 */
+.cl-index-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.cl-index-item{
+  background:var(--cl-panel);border:1px solid var(--cl-line);border-radius:var(--cl-radius);
+  overflow:hidden;transition:.25s;
+}
+.cl-index-item:hover{transform:translateY(-4px);border-color:rgba(255,90,60,.4);}
+.cl-index-item img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.cl-index-body{padding:14px 16px 18px;}
+.cl-index-body h3{font-size:15.5px;margin-bottom:6px;}
+.cl-index-body p{font-size:13.2px;color:var(--cl-ink-dim);margin:0;}
+
+/* 企业动态时间线 */
+.cl-dynamics{position:relative;padding-left:24px;}
+.cl-dynamics::before{
+  content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(var(--cl-neon),var(--cl-mint));
+}
+.cl-dynamic{position:relative;padding:0 0 22px 6px;}
+.cl-dynamic::before{
+  content:"";position:absolute;left:-22px;top:7px;width:10px;height:10px;border-radius:50%;
+  background:var(--cl-neon);box-shadow:0 0 0 4px rgba(255,90,60,.18);
+}
+.cl-dynamic time{font-size:12.5px;color:var(--cl-mint);letter-spacing:1px;}
+.cl-dynamic h3{font-size:16.5px;margin:4px 0;}
+.cl-dynamic p{font-size:13.5px;color:var(--cl-ink-dim);margin:0;}
+
+/* FAQ */
+.cl-faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;}
+.cl-faq details{
+  background:var(--cl-panel);border:1px solid var(--cl-line);border-radius:12px;
+  padding:14px 16px;transition:.2s;
+}
+.cl-faq details[open]{border-color:rgba(92,225,196,.45);}
+.cl-faq summary{
+  cursor:pointer;font-weight:700;font-size:14.8px;list-style:none;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.cl-faq summary::-webkit-details-marker{display:none;}
+.cl-faq summary::after{content:"＋";color:var(--cl-mint);font-weight:800;transition:.2s;}
+.cl-faq details[open] summary::after{content:"－";color:var(--cl-neon);}
+.cl-faq details p{font-size:13.5px;color:var(--cl-ink-dim);margin:10px 0 0;}
+
+/* 合作墙 */
+.cl-partners{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+.cl-partner{
+  background:var(--cl-panel);border:1px solid var(--cl-line);border-radius:12px;
+  padding:18px 14px;text-align:center;font-weight:800;font-size:14px;color:var(--cl-ink-dim);
+  letter-spacing:1px;transition:.22s;
+}
+.cl-partner:hover{color:var(--cl-ink);border-color:var(--cl-neon);background:var(--cl-panel-2);}
+.cl-partner span{display:block;font-size:11px;font-weight:500;letter-spacing:0;color:var(--cl-ink-dim);margin-top:4px;}
+
+/* 投稿/联系 */
+.cl-cta-band{
+  background:linear-gradient(120deg,rgba(255,90,60,.16),rgba(92,225,196,.1));
+  border:1px solid var(--cl-line);border-radius:22px;padding:38px;
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:30px;align-items:center;
+}
+.cl-cta-band h2{font-size:clamp(22px,2.6vw,30px);}
+.cl-cta-band p{color:var(--cl-ink-dim);font-size:14.5px;margin-bottom:0;}
+.cl-cta-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;}
+
+/* 页脚 */
+.cl-footer{
+  border-top:1px solid var(--cl-line);padding:46px 0 28px;margin-top:20px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.28));
+}
+.cl-footer-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.75fr));gap:30px;}
+.cl-footer h4{font-size:13.5px;letter-spacing:2px;color:var(--cl-mint);margin-bottom:12px;}
+.cl-footer ul{list-style:none;padding:0;margin:0;font-size:13.5px;color:var(--cl-ink-dim);}
+.cl-footer li{padding:4px 0;}
+.cl-footer p{font-size:13.5px;color:var(--cl-ink-dim);}
+.cl-footer-bottom{
+  margin-top:32px;padding-top:18px;border-top:1px solid var(--cl-line);
+  font-size:12.5px;color:var(--cl-ink-dim);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+/* Toast & 回到顶部 */
+.cl-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+  background:var(--cl-panel-2);border:1px solid var(--cl-mint);color:var(--cl-ink);
+  padding:11px 20px;border-radius:12px;font-size:13.5px;box-shadow:var(--cl-shadow);
+  opacity:0;pointer-events:none;transition:.28s;z-index:200;
+}
+.cl-toast.is-on{opacity:1;transform:translate(-50%,0);}
+.cl-top-btn{
+  position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:14px;
+  background:var(--cl-panel-2);border:1px solid var(--cl-line);color:var(--cl-mint);
+  font-size:18px;display:grid;place-items:center;z-index:150;
+  opacity:0;pointer-events:none;transition:.26s;
+}
+.cl-top-btn.is-on{opacity:1;pointer-events:auto;}
+.cl-top-btn:hover{border-color:var(--cl-mint);}
+
+/* 弹窗 */
+.cl-modal{
+  position:fixed;inset:0;background:rgba(8,9,12,.72);backdrop-filter:blur(4px);
+  display:none;place-items:center;z-index:300;padding:22px;
+}
+.cl-modal.is-on{display:grid;}
+.cl-modal-box{
+  width:min(520px,100%);background:var(--cl-panel);border:1px solid var(--cl-line);
+  border-radius:20px;padding:26px;box-shadow:var(--cl-shadow);position:relative;
+  max-height:82vh;overflow:auto;
+}
+.cl-modal-box h3{margin-top:0;font-size:19px;}
+.cl-modal-box p{font-size:14px;color:var(--cl-ink-dim);}
+.cl-modal-close{
+  position:absolute;right:16px;top:14px;background:transparent;border:0;color:var(--cl-ink-dim);
+  font-size:20px;line-height:1;
+}
+.cl-modal-box label{display:block;font-size:13px;color:var(--cl-ink-dim);margin:14px 0 6px;}
+.cl-modal-box input,.cl-modal-box textarea{
+  width:100%;background:var(--cl-root-bg);border:1px solid var(--cl-line);color:var(--cl-ink);
+  border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit;outline:none;
+}
+.cl-modal-box input:focus,.cl-modal-box textarea:focus{border-color:var(--cl-mint);}
+.cl-share-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.cl-share-row button{
+  background:var(--cl-panel-2);border:1px solid var(--cl-line);color:var(--cl-ink);
+  border-radius:10px;padding:9px 16px;font-size:13.5px;
+}
+.cl-share-row button:hover{border-color:var(--cl-mint);color:var(--cl-mint);}
+
+@media (max-width:960px){
+  :root{--cl-sticky:108px;}
+  .cl-hero-grid,.cl-insight,.cl-feature-list,.cl-cta-band{grid-template-columns:minmax(0,1fr);gap:28px;}
+  .cl-insight-card{position:static;}
+  .cl-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .cl-cta-actions{justify-content:flex-start;}
+  .cl-search input{width:140px;}
+  .cl-search input:focus{width:170px;}
+}
+@media (max-width:760px){
+  .cl-burger{display:block;}
+  .cl-nav{
+    display:none;width:100%;flex-direction:column;gap:2px;
+    padding:8px 0 4px;order:5;
+  }
+  .cl-nav.is-open{display:flex;}
+  .cl-head-tools{order:4;}
+  .cl-hero{padding:34px 0 22px;}
+  .cl-hero-stats{gap:20px;}
+  .cl-announce-track{gap:16px;font-size:12.5px;}
+  .cl-announce{flex-wrap:wrap;}
+  .cl-footer-grid{grid-template-columns:minmax(0,1fr);}
+  .cl-cta-band{padding:24px;}
+  .cl-section{padding:38px 0;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶区：公告条 + 页头 -->
+<div class="cl-sticky-zone">
+  <div class="cl-announce">
+    <div class="cl-wrap cl-announce" style="padding:0;">
+      <span class="cl-announce-tag">官方发布</span>
+      <div class="cl-announce-track">
+        <span><b>11/21</b>《磁力联盟·冬叙》第一季 6 集全量上线</span>
+        <span><b>11/20</b> 创作者扶持计划第三期开放报名</span>
+        <span><b>11/18</b> 4K 高清转码通道升级，上传提速 40%</span>
+      </div>
+    </div>
+  </div>
+  <div class="cl-wrap cl-header">
+    <a class="cl-brand" href="#top">
+      <span class="cl-brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 5l11 7-11 7z" fill="#fff"/>
+        </svg>
+      </span>
+      <span>磁力联盟<small>MAGNET UNION · 官方视频门户</small></span>
+    </a>
+    <button class="cl-burger" id="clBurger" aria-label="展开导航">☰</button>
+    <nav class="cl-nav" id="clNav" aria-label="主导航">
+      <a href="#insight">品牌解析</a>
+      <a href="#videos">精品内容</a>
+      <a href="#topics">专题企划</a>
+      <a href="#authors">创作者</a>
+      <a href="#voices">口碑评价</a>
+      <a href="#dynamics">企业动态</a>
+      <a href="#faq">帮助中心</a>
+    </nav>
+    <div class="cl-head-tools">
+      <div class="cl-search">
+        <input type="search" id="clSearchInput" placeholder="搜索磁力联盟内容" aria-label="站内搜索">
+        <div class="cl-search-feedback" id="clSearchFeedback"></div>
+      </div>
+      <button class="cl-submit-btn" id="clUploadBtn">投稿 / 上传</button>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- S2 品牌首屏 -->
+  <section class="cl-hero">
+    <div class="cl-wrap cl-hero-grid">
+      <div class="cl-hero-copy">
+        <span class="cl-hero-eyebrow">官方网站 · 原创高清 · 持续运营</span>
+        <h1>磁力联盟</h1>
+        <p class="cl-hero-slogan">让每一段真实影像，都拥有彼此吸引的力量。</p>
+        <p class="cl-hero-desc">
+          磁力联盟是专注原创视频内容的企业级品牌社区，深耕人物纪录、生活方式与创作幕后等垂直领域。
+          我们以官方标准打磨精品内容，以创作者为核心构建内容生态，为观众提供值得信赖的高清观看体验，
+          也为品牌与创作者提供长期陪伴的成长平台。
+        </p>
+        <div class="cl-hero-cta">
+          <button class="cl-btn-primary" data-scroll="#videos">观看精品内容</button>
+          <button class="cl-btn-ghost" id="clJoinBtn">加入创作者计划</button>
+          <button class="cl-btn-ghost" data-scroll="#insight">了解品牌</button>
+        </div>
+        <div class="cl-hero-stats">
+          <div class="cl-stat"><b data-count="12680">0</b><span>原创作品数</span></div>
+          <div class="cl-stat"><b data-count="3820000">0</b><span>社区成员</span></div>
+          <div class="cl-stat"><b data-count="98">0</b><span>口碑好评率 %</span></div>
+        </div>
+      </div>
+      <div class="cl-hero-visual">
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23202430'/%3E%3Cstop offset='1' stop-color='%2310161c'/%3E%3C/linearGradient%3E%3CradialGradient id='g2' cx='0.72' cy='0.3' r='0.6'%3E%3Cstop offset='0' stop-color='%23ff5a3c' stop-opacity='0.85'/%3E%3Cstop offset='1' stop-color='%23ff5a3c' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23g1)'/%3E%3Crect width='800' height='600' fill='url(%23g2)'/%3E%3Cg stroke='%235ce1c4' stroke-opacity='0.35' fill='none'%3E%3Ccircle cx='520' cy='240' r='120'/%3E%3Ccircle cx='520' cy='240' r='176'/%3E%3Ccircle cx='520' cy='240' r='232'/%3E%3C/g%3E%3Ccircle cx='520' cy='240' r='52' fill='%235ce1c4' fill-opacity='0.9'/%3E%3Cpath d='M504 220l30 20-30 20z' fill='%2314161b'/%3E%3Cg fill='%23eef1f6' fill-opacity='0.16'%3E%3Crect x='80' y='360' width='220' height='10' rx='5'/%3E%3Crect x='80' y='388' width='150' height='10' rx='5'/%3E%3Crect x='80' y='416' width='190' height='10' rx='5'/%3E%3C/g%3E%3Cg fill='%23ff8b6b'%3E%3Crect x='80' y='470' width='96' height='34' rx='17'/%3E%3C/g%3E%3Cg fill='%2314161b'%3E%3Crect x='98' y='481' width='60' height='12' rx='6'/%3E%3C/g%3E%3C/svg%3E"
+               alt="磁力联盟官方门户主视觉：磁力环与播放符号构成的深色品牌主画面" width="800" height="600">
+          <figcaption>
+            <b>磁力联盟 · 官方主视觉</b>
+            以磁力环隐喻创作者与观众之间的相互吸引，正片内容每周更新。
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关键词解析 / 品牌深度 -->
+  <section class="cl-section" id="insight">
+    <div class="cl-wrap cl-insight">
+      <div>
+        <div class="cl-section-head">
+          <span class="cl-kicker">Brand Insight</span>
+          <h2>磁力联盟，是一个品牌，也是一种<em>吸引的结构</em></h2>
+          <p class="cl-lead">我们把“磁力”理解为连接：内容吸引观众，观众吸引创作者，创作者吸引品牌，最终形成持续运转的内容生态。</p>
+        </div>
+
+        <h3>为什么要叫磁力联盟：一次关于连接的命名</h3>
+        <p>磁力联盟的品牌名并不是一句抽象的比喻，而是一套可被观察、被体验的运营逻辑。磁场不会凭空出现，它需要场源的稳定、方向的清晰与距离的恰当。我们把这三件事分别落到了内容侧、创作者侧与观众侧：内容侧坚持官方标准与原创正版，创作者侧提供长期陪伴的成长通道，观众侧用社区机制让每一次观看都能沉淀为一次关系。很多用户第一次来到磁力联盟，是被一支人物纪录短片留下的；第二次来，是为了追更；第三次来，就会主动留下自己的评论与创作笔记。这种从“看见”到“留下”的迁移，正是我们理解中<strong>磁力联盟官网</strong>应该完成的动作。</p>
+
+        <h3>内容生态如何运转：从投稿、审核到高清上线的完整链路</h3>
+        <p>在磁力联盟平台上，一条精品内容要走过六道工序。第一道是创作提案，创作者在后台提交脚本大纲与拍摄计划，联盟编辑部在三个工作日内给出方向建议；第二道是素材补录提示，帮助创作者补齐现场环境音和人物特写的空镜；第三道是粗剪评审，编辑会对节奏和叙述重心给出具体到时间码的反馈；第四道是正版素材核验，包括音乐、字体与引用影像的授权确认；第五道是高清转码，通过自建 4K 通道统一输出不同码率的版本；第六道是上线运营，结合标签体系、专题企划与社区推荐进行分发。这套流程看似繁琐，却让磁力联盟的原创内容在品质与口碑上保持了稳定。我们始终认为，<strong>值得信赖</strong>不是一个宣传词，而是一条条可被复盘的工序积累出来的结果。</p>
+
+        <h3>人物与真实：磁力联盟最在意的两种质感</h3>
+        <p>如果你连续观看十支磁力联盟的原创内容，会发现它们大多不愿意把人拍成符号。我们更关心一个人在具体场景里如何做决定：凌晨四点起床备货的店主、连续三年记录同一条街的摄影师、把老家具修复到能继续使用的手作者。磁力联盟深耕人物纪录与生活方式两个垂直领域，不急于追求大制作，而是用大量真实场景与长镜头把人的状态留住。这些内容有一个共同点：它们都能被反复观看，并且每次观看都会出现新的细节。这也解释了为什么磁力联盟的用户评价里，出现频率最高的词是“真实”与“温暖”。在影像越来越快的时代，提供一种可以慢下来的观看方式，本身就是一种社会责任。</p>
+
+        <h3>面向创作者的长期主义：从流量到能力的位移</h3>
+        <p>很多创作者会问，磁力联盟和其他平台最大的差别是什么。我们的回答是：我们更愿意把资源放在能力的成长上，而不只是流量曲线的波峰。磁力联盟每季度组织一次创作营，内容涵盖脚本结构、现场收音、剪辑节奏、版权合规与账号经营，由平台编辑与资深创作者共同授课；每月开放一次作品互评，让不同领域的创作者互为观众；每年评选一次年度原创作品，获奖作品会进入线下展映企划。这些机制不一定能立刻带来播放量增长，但能让一位创作者在一年后具备独立完成一支高品质短片的能力。磁力联盟相信，<strong>内容生态</strong>的底色是人的能力，而不是一次性的爆款。</p>
+
+        <p>从行业观察的角度看，视频内容正在从“抢占时长”转向“建立信任”。用户越来越愿意为一段有信息密度、有真实情绪的内容停留，也越来越不愿意被重复的口播和模板化的剪辑消耗。磁力联盟把这种变化视为机会：我们坚持官方发布的标准，坚持正版与原创，坚持把每一支内容的信息层次讲清楚。品牌方在这里找到的是与内容调性匹配的合作方式，创作者在这里找到的是可以长期耕种的领域，观众在这里找到的是可以安心观看的高清内容。三者之间的相互吸引，构成了磁力联盟今天的样子，也构成了我们对下一个阶段的期待。</p>
+      </div>
+
+      <aside class="cl-insight-card">
+        <h3>磁力联盟 · 品牌数据速览</h3>
+        <ul>
+          <li><span>原创作品累计</span><b>12,680+</b></li>
+          <li><span>入驻创作者</span><b>2,340 位</b></li>
+          <li><span>专题企划累计</span><b>186 期</b></li>
+          <li><span>4K 高清内容占比</span><b>72%</b></li>
+          <li><span>社区日均互动</span><b>46,800 次</b></li>
+          <li><span>内容复核通过率</span><b>91.4%</b></li>
+        </ul>
+        <p style="margin:16px 0 0;font-size:13px;color:var(--cl-ink-dim);">
+          数据统计周期：2026 年第三季度。磁力联盟持续运营中，数据每季度于企业动态中公示。
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- S3 精品内容：一幅重点大图 + 文字列表 -->
+  <section class="cl-section" id="videos">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Featured Videos</span>
+        <h2>磁力联盟精品内容 · 本周<em>重点推荐</em></h2>
+        <p class="cl-lead">每一支内容都经过编辑部复核，标注真实创作背景与完整授权信息。</p>
+      </div>
+
+      <div class="cl-feature-list">
+        <article class="cl-feature-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='f1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231b2a2a'/%3E%3Cstop offset='1' stop-color='%230d1414'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23f1)'/%3E%3Cg fill='none' stroke='%235ce1c4' stroke-opacity='0.5'%3E%3Cpath d='M0 330 Q200 260 400 330 T800 310'/%3E%3Cpath d='M0 370 Q200 300 400 370 T800 350' stroke-opacity='0.28'/%3E%3C/g%3E%3Ccircle cx='600' cy='150' r='70' fill='%23ff5a3c' fill-opacity='0.85'/%3E%3Cg fill='%23eef1f6' fill-opacity='0.14'%3E%3Crect x='60' y='80' width='180' height='12' rx='6'/%3E%3Crect x='60' y='112' width='120' height='12' rx='6'/%3E%3C/g%3E%3Cg fill='%230d1414'%3E%3Cpath d='M586 128l30 22-30 22z'/%3E%3C/g%3E%3Cg fill='%23ff9a6b' fill-opacity='0.9'%3E%3Crect x='60' y='360' width='130' height='30' rx='15'/%3E%3C/g%3E%3C/svg%3E"
+               alt="磁力联盟人物纪录短片《守夜的第七年》封面：夜色中的河道与橙色日出" width="800" height="450">
+          <div class="cl-feature-body">
+            <div class="cl-tags">
+              <span class="cl-tag">人物纪录</span>
+              <span class="cl-tag is-mint">高清 4K</span>
+              <span class="cl-tag">官方发布</span>
+            </div>
+            <h3>《守夜的第七年》：一个夜班河道清洁工的一整年</h3>
+            <p>摄制组跟随主人公老周 364 天，记录他在凌晨一点到五点之间的工作节奏，以及他与这条河之间慢慢建立起来的默契。</p>
+            <div class="cl-meta">
+              <span>作者：纸上风物</span><span>时长 26:14</span><span>播放 128.6 万</span>
+            </div>
+            <div class="cl-video-actions">
+              <button class="cl-chip-btn cl-like" data-like="41.2万">♥ 喜欢 41.2万</button>
+              <button class="cl-chip-btn cl-save">☆ 收藏</button>
+              <button class="cl-chip-btn cl-share">↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="cl-video-list">
+          <div class="cl-video-item">
+            <span class="cl-video-no">01</span>
+            <div>
+              <h3>把一条旧街拍成七年：街区摄影的观察方法</h3>
+              <p>从取景到选题，摄影师阿岚拆解自己坚持七年的同一街区记录计划，并给出 5 个可以立刻上手的观察练习。</p>
+              <div class="cl-meta"><span>作者：阿岚在街角</span><span>播放 62.4 万</span><span>收藏 2.1 万</span></div>
+              <div class="cl-video-actions">
+                <button class="cl-chip-btn cl-like" data-like="8.6万">♥ 喜欢 8.6万</button>
+                <button class="cl-chip-btn cl-save">☆ 收藏</button>
+                <button class="cl-chip-btn cl-share">↗ 分享</button>
+              </div>
+            </div>
+          </div>
+          <div class="cl-video-item">
+            <span class="cl-video-no">02</span>
+            <div>
+              <h3>四平米厨房里的四季：一个人的三餐记录</h3>
+              <p>没有专业灶台，也没有补光设备，创作者用一台手机记录小厨房里的 96 顿晚餐，讲清楚“日常记录”为何值得被认真对待。</p>
+              <div class="cl-meta"><span>作者：小满的灶台</span><span>播放 94.7 万</span><span>评论 3,842</span></div>
+              <div class="cl-video-actions">
+                <button class="cl-chip-btn cl-like" data-like="12.3万">♥ 喜欢 12.3万</button>
+                <button class="cl-chip-btn cl-save">☆ 收藏</button>
+                <button class="cl-chip-btn cl-share">↗ 分享</button>
+              </div>
+            </div>
+          </div>
+          <div class="cl-video-item">
+            <span class="cl-video-no">03</span>
+            <div>
+              <h3>现场收音实战：在嘈杂菜市场录到干净人声</h3>
+              <p>磁力联盟创作营的公开课片段，讲解指向性麦位、防风处理与后期降噪的三个关键判断，配可下载的参数表。</p>
+              <div class="cl-meta"><span>作者：磁力联盟官方课堂</span><span>播放 38.9 万</span><span>收藏 1.6 万</span></div>
+              <div class="cl-video-actions">
+                <button class="cl-chip-btn cl-like" data-like="5.2万">♥ 喜欢 5.2万</button>
+                <button class="cl-chip-btn cl-save">☆ 收藏</button>
+                <button class="cl-chip-btn cl-share">↗ 分享</button>
+              </div>
+            </div>
+          </div>
+          <div class="cl-video-item">
+            <span class="cl-video-no">04</span>
+            <div>
+              <h3>修复一把三十年的椅子，需要哪些耐心</h3>
+              <p>手作者把榫卯拆开、补色、重新上蜡的全过程，中间失败两次，全部保留在片子里，这也是我们理解的匠心。</p>
+              <div class="cl-meta"><span>作者：木作阿原</span><span>播放 51.3 万</span><span>评分 9.4</span></div>
+              <div class="cl-video-actions">
+                <button class="cl-chip-btn cl-like" data-like="7.8万">♥ 喜欢 7.8万</button>
+                <button class="cl-chip-btn cl-save">☆ 收藏</button>
+                <button class="cl-chip-btn cl-share">↗ 分享</button>
+              </div>
+            </div>
+          </div>
+          <div class="cl-video-item">
+            <span class="cl-video-no">05</span>
+            <div>
+              <h3>一条片子的第一分钟：剪辑节奏的开场设计</h3>
+              <p>用五支磁力联盟原创内容做对照，拆解开场镜头长度、环境音铺陈与信息递进的差异。</p>
+              <div class="cl-meta"><span>作者：剪信</span><span>播放 27.5 万</span><span>收藏 9,412</span></div>
+              <div class="cl-video-actions">
+                <button class="cl-chip-btn cl-like" data-like="3.1万">♥ 喜欢 3.1万</button>
+                <button class="cl-chip-btn cl-save">☆ 收藏</button>
+                <button class="cl-chip-btn cl-share">↗ 分享</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 专题企划 -->
+  <section class="cl-section" id="topics">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Series & Programs</span>
+        <h2>专题企划 · 磁力联盟的<em>长期栏目</em></h2>
+        <p class="cl-lead">以季度为周期的深度企划，每期围绕一个具体问题持续追问，形成可回看的内容档案。</p>
+      </div>
+      <div class="cl-topics">
+        <article class="cl-topic">
+          <span class="cl-topic-status">更新中 · 第 6 集已上线</span>
+          <h3>《冬叙》：一年中最慢的十二个下午</h3>
+          <p style="font-size:13.5px;color:var(--cl-ink-dim);margin:0;">邀请十二位不同职业的创作者，在冬季下午记录一段没有目标的时光。</p>
+          <ol>
+            <li>第 6 集：面包房打烊后的两小时</li>
+            <li>第 5 集：图书馆闭馆前的修复台</li>
+            <li>第 4 集：河堤上的钓鱼人</li>
+          </ol>
+        </article>
+        <article class="cl-topic">
+          <span class="cl-topic-status">已完结 · 共 8 集</span>
+          <h3>《手上有活》：八种被忽略的手艺</h3>
+          <p style="font-size:13.5px;color:var(--cl-ink-dim);margin:0;">从配钥匙到修钟表，呈现手艺背后的判断力与耐心。</p>
+          <ol>
+            <li>修表：一枚机芯的四十七个零件</li>
+            <li>配钥匙：三分钟里的手感</li>
+            <li>裁缝：一件旧衣的第二次生命</li>
+          </ol>
+        </article>
+        <article class="cl-topic">
+          <span class="cl-topic-status">开放征集 · 报名中</span>
+          <h3>《我的第一条片子》：新人创作者企划</h3>
+          <p style="font-size:13.5px;color:var(--cl-ink-dim);margin:0;">面向首次投稿的创作者，提供脚本诊断、剪辑建议与官方推荐位。</p>
+          <ol>
+            <li>征集时间：即日起至 12 月 20 日</li>
+            <li>入选作品将获得高清转码支持</li>
+            <li>优秀作品进入年度展映企划</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 创作者矩阵 — 双列简介 -->
+  <section class="cl-section" id="authors">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Creators</span>
+        <h2>磁力联盟的<em>创作者</em>们</h2>
+        <p class="cl-lead">他们来自不同领域，但对真实的耐心是共同的底色。</p>
+      </div>
+      <div class="cl-authors">
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#ff5a3c,#ffb49a);">纸</span>
+          <div class="cl-author-main">
+            <h3>纸上风物</h3>
+            <div class="cl-author-field">人物纪录 · 长片</div>
+            <p>七年纪录片拍摄经验，偏爱跟随式拍摄与长时间观察，习惯先建立关系再拿起机器。作品多次进入磁力联盟年度原创展映，擅长在平淡场景中抓住人的选择瞬间。</p>
+            <div class="cl-author-nums"><span>作品 <b>46</b></span><span>粉丝 <b>28.4 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="纸上风物" data-info="代表作品《守夜的第七年》《渡口三小时》。拍摄主张：先把人当朋友，再把镜头当记录工具。">查看简介</button>
+          </div>
+        </article>
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#5ce1c4,#a4ffe8);">岚</span>
+          <div class="cl-author-main">
+            <h3>阿岚在街角</h3>
+            <div class="cl-author-field">城市探索 · 街区摄影</div>
+            <p>街拍摄影师与视频创作者，连续七年记录同一条老街，用固定机位与季节对照呈现城市的缓慢变化。习惯在片尾附上拍摄地点与时间，方便观众自己去看一看。</p>
+            <div class="cl-author-nums"><span>作品 <b>63</b></span><span>粉丝 <b>19.7 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="阿岚在街角" data-info="代表作品《一条街的七年》《雨天的四十七个路口》。创作主张：不追求完美画面，追求可被验证的时间。">查看简介</button>
+          </div>
+        </article>
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#ffd166,#ff9a6b);">满</span>
+          <div class="cl-author-main">
+            <h3>小满的灶台</h3>
+            <div class="cl-author-field">生活方式 · 美食记录</div>
+            <p>在四平米厨房里做饭与拍片，坚持不摆盘、不补光，用最朴素的方式记录一日三餐。她相信厨房是最容易暴露一个人真实状态的地方，也因此收获了大量共鸣。</p>
+            <div class="cl-author-nums"><span>作品 <b>112</b></span><span>粉丝 <b>34.6 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="小满的灶台" data-info="代表作品《四平米厨房的四季》《一个人吃饭的第九十天》。">查看简介</button>
+          </div>
+        </article>
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#8ecae6,#5ce1c4);">原</span>
+          <div class="cl-author-main">
+            <h3>木作阿原</h3>
+            <div class="cl-author-field">手作 DIY · 修复</div>
+            <p>木工手作者，专注旧家具修复与传统榫卯结构。视频里保留大量失败与返工片段，他认为这才是手艺真实的样子。已连续两年参与磁力联盟手艺专题企划。</p>
+            <div class="cl-author-nums"><span>作品 <b>58</b></span><span>粉丝 <b>15.2 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="木作阿原" data-info="代表作品《三十年的椅子》《一把榫卯凳的诞生》。">查看简介</button>
+          </div>
+        </article>
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#c77dff,#ff9a6b);">剪</span>
+          <div class="cl-author-main">
+            <h3>剪信</h3>
+            <div class="cl-author-field">教程干货 · 剪辑方法</div>
+            <p>后期指导与课程讲师，擅长把抽象的剪辑直觉拆解成可执行的步骤。磁力联盟创作营常驻讲师，课程材料以条款清晰、可直接照做著称，是新人创作者的常用参考。</p>
+            <div class="cl-author-nums"><span>作品 <b>89</b></span><span>粉丝 <b>22.8 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="剪信" data-info="代表作品《第一分钟的节奏》《开场三十秒的五种做法》。">查看简介</button>
+          </div>
+        </article>
+        <article class="cl-author">
+          <span class="cl-avatar" style="background:linear-gradient(135deg,#ffb703,#5ce1c4);">野</span>
+          <div class="cl-author-main">
+            <h3>野路观察</h3>
+            <div class="cl-author-field">户外活动 · 自然纪录</div>
+            <p>户外领队与自然观察者，拍摄山野徒步与生态记录。所有户外内容均标注线路难度与安全提示，主张“拍到是运气，平安回来才是本事”，被社区称为最靠谱的户外创作者。</p>
+            <div class="cl-author-nums"><span>作品 <b>41</b></span><span>粉丝 <b>17.3 万</b></span></div>
+            <button class="cl-author-more cl-author-open" data-author="野路观察" data-info="代表作品《背着帐篷过雨季》《山脊线上的三小时》。">查看简介</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 用户评价 — 双列短评 -->
+  <section class="cl-section" id="voices">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Community Voices</span>
+        <h2>来自社区的<em>口碑</em></h2>
+        <p class="cl-lead">我们保留了不同长度、不同角度的真实反馈，包括不那么客气的意见。</p>
+      </div>
+      <div class="cl-comments">
+        <article class="cl-comment">
+          <p>第一次在磁力联盟连着看了三个小时，最打动我的是《守夜的第七年》。没有煽情配乐，就是跟着一个人上夜班，看完反而很想给身边那些不说话的人发消息。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#ff5a3c;">林</span>林向晚 · <span class="cl-stars">★★★★★</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>作为创作者说点实际的：磁力联盟的粗剪反馈是真的会写到时间码，不是模板话术。我第三条片子按建议重剪开头，完播率提升了差不多两成。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#5ce1c4;">陈</span>陈拾光 · <span class="cl-stars">★★★★★</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>内容确实好，但希望专题页能加一个“按更新时间排序”的选项，现在翻旧企划有点费劲。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#ffd166;">周</span>周子阔 · <span class="cl-stars">★★★★☆</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>高清是真的高清，4K 版本在投屏上看细节很扎实。相比一些平台把码率压得很低，磁力联盟这点很良心。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#8ecae6;">苏</span>苏小野 · <span class="cl-stars">★★★★★</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>我关注小满的灶台两年了，她开始做长片之后节奏更稳。磁力联盟愿意给这种“没有爆点”的内容推荐位，难得。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#c77dff;">何</span>何舟舟 · <span class="cl-stars">★★★★★</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>创作营的课程内容比想象中硬核，尤其现场收音那节，把我在菜市场录废的素材救了回来。希望以后多一些线下工作坊。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#ff9a6b;">许</span>许清和 · <span class="cl-stars">★★★★☆</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>评论区氛围不错，讨论基本围绕内容本身。上次有人在评论区认真指出片中一个时间标注错误，作者当天就改了简介，这种互动很舒服。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#5ce1c4;">罗</span>罗一川 · <span class="cl-stars">★★★★★</span></div>
+        </article>
+        <article class="cl-comment">
+          <p>唯一的建议：移动端播放器缓存有时候会卡一下，我在地铁上看《手上有活》遇到过两次，其他都很好。</p>
+          <div class="cl-comment-who"><span class="cl-dot" style="background:#ffb703;">吴</span>吴知夏 · <span class="cl-stars">★★★★☆</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 图文索引 -->
+  <section class="cl-section">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Reading Index</span>
+        <h2>配套图文索引 · 影像之外的<em>文字档案</em></h2>
+        <p class="cl-lead">每支重点内容都配有文字版笔记，适合在通勤路上快速浏览。</p>
+      </div>
+      <div class="cl-index-list">
+        <article class="cl-index-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%231c2430'/%3E%3Cg stroke='%235ce1c4' stroke-opacity='0.5' fill='none'%3E%3Cpath d='M40 240 L140 140 L220 200 L360 70'/%3E%3C/g%3E%3Ccircle cx='140' cy='140' r='8' fill='%23ff5a3c'/%3E%3Ccircle cx='220' cy='200' r='8' fill='%23ffd166'/%3E%3Ccircle cx='360' cy='70' r='10' fill='%235ce1c4'/%3E%3C/svg%3E"
+               alt="图文索引封面：一条折线连接三个记录节点，对应街区影像的时间轴" width="400" height="300">
+          <div class="cl-index-body">
+            <h3>七年纪录的拍摄节点清单</h3>
+            <p>阿岚在街角的完整时间轴与设备更替记录，含每年固定的三个机位说明。</p>
+          </div>
+        </article>
+        <article class="cl-index-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23261e1a'/%3E%3Cg fill='%23ff9a6b' fill-opacity='0.85'%3E%3Ccircle cx='140' cy='140' r='58'/%3E%3C/g%3E%3Cg fill='%23ffd166' fill-opacity='0.6'%3E%3Ccircle cx='240' cy='190' r='34'/%3E%3C/g%3E%3Cg fill='%23eef1f6' fill-opacity='0.18'%3E%3Crect x='40' y='240' width='140' height='9' rx='4'/%3E%3Crect x='40' y='262' width='90' height='9' rx='4'/%3E%3C/g%3E%3C/svg%3E"
+               alt="图文索引封面：暖橙色圆形餐盘与配料构图，对应小厨房三餐记录笔记" width="400" height="300">
+          <div class="cl-index-body">
+            <h3>四平米厨房的动线改造笔记</h3>
+            <p>小满整理的三轮调整方案，包括拍摄机位与备餐动线如何互不打扰。</p>
+          </div>
+        </article>
+        <article class="cl-index-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2317222a'/%3E%3Cg fill='none' stroke='%238ecae6' stroke-width='3' stroke-opacity='0.75'%3E%3Cpath d='M60 90h90v60h-90z'/%3E%3Cpath d='M210 90h120v60h-120z'/%3E%3Cpath d='M60 190h270'/%3E%3C/g%3E%3Cg fill='%235ce1c4'%3E%3Crect x='60' y='212' width='70' height='24' rx='12'/%3E%3C/g%3E%3C/svg%3E"
+               alt="图文索引封面：分镜框与音轨示意线，对应现场收音参数笔记" width="400" height="300">
+          <div class="cl-index-body">
+            <h3>现场收音参数速查表</h3>
+            <p>指向性麦位、防风棉选择与降噪阈值的组合建议，附常见错误对照。</p>
+          </div>
+        </article>
+        <article class="cl-index-item">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23231d2b'/%3E%3Cg stroke='%23c77dff' stroke-opacity='0.7' fill='none' stroke-width='3'%3E%3Cpath d='M90 220 V120 a40 40 0 0 1 80 0 V220'/%3E%3Cpath d='M210 220 V100 h60 v120'/%3E%3C/g%3E%3Cg fill='%23ffd166'%3E%3Ccircle cx='290' cy='150' r='22'/%3E%3C/g%3E%3C/svg%3E"
+               alt="图文索引封面：紫色线条勾勒的家具轮廓，对应旧家具修复的工序笔记" width="400" height="300">
+          <div class="cl-index-body">
+            <h3>榫卯修复的六道工序</h3>
+            <p>木作阿原整理的可复用流程，从拆解标记到上蜡养护的注意事项。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 企业动态 -->
+  <section class="cl-section" id="dynamics">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Company News</span>
+        <h2>磁力联盟<em>企业动态</em>与官方发布</h2>
+        <p class="cl-lead">平台规则、功能更新与企划进展，均在此处第一时间公示。</p>
+      </div>
+      <div class="cl-dynamics">
+        <article class="cl-dynamic">
+          <time datetime="2026-11-21">2026 年 11 月 21 日</time>
+          <h3>《冬叙》第一季全量上线，六集支持 4K 高清观看</h3>
+          <p>本季共六集，覆盖面包房、图书馆、河堤等六个冬季场景，全部内容已完成正版素材核验。</p>
+        </article>
+        <article class="cl-dynamic">
+          <time datetime="2026-11-20">2026 年 11 月 20 日</time>
+          <h3>创作者扶持计划第三期开放报名</h3>
+          <p>本期新增 20 个名额，提供剪辑指导、设备租借与官方推荐位，报名截止 12 月 20 日。</p>
+        </article>
+        <article class="cl-dynamic">
+          <time datetime="2026-11-18">2026 年 11 月 18 日</time>
+          <h3>上传通道升级：4K 转码平均耗时缩短 40%</h3>
+          <p>本次升级优化了长片分段处理逻辑，超过 30 分钟的作品将显著受益，历史作品不受影响。</p>
+        </article>
+        <article class="cl-dynamic">
+          <time datetime="2026-11-12">2026 年 11 月 12 日</time>
+          <h3>社区评论规范更新，新增引用标注要求</h3>
+          <p>为保护原创，引用他人影像或观点时需注明出处，平台将提供一键标注工具。</p>
+        </article>
+        <article class="cl-dynamic">
+          <time datetime="2026-11-05">2026 年 11 月 05 日</time>
+          <h3>年度原创作品评选启动，设置六个奖项</h3>
+          <p>评选覆盖人物纪录、生活方式、教程干货等方向，入围作品将进入线下展映企划。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cl-section" id="faq">
+    <div class="cl-wrap">
+      <div class="cl-section-head">
+        <span class="cl-kicker">Help Center</span>
+        <h2>帮助中心 · 关于磁力联盟的<em>常见问题</em></h2>
+      </div>
+      <div class="cl-faq">
+        <details open>
+          <summary>磁力联盟是官方平台吗？内容由谁审核？</summary>
+          <p>是的，磁力联盟为品牌自营的官方网站，所有公开内容均由编辑部按统一标准复核，包括版权、事实信息与画质要求。</p>
+        </details>
+        <details>
+          <summary>如何提交作品？对设备有硬性要求吗？</summary>
+          <p>登录后在“投稿 / 上传”入口提交即可。设备不设门槛，手机拍摄同样可以投稿，我们更看重内容的信息密度与真实性。</p>
+        </details>
+        <details>
+          <summary>作品审核一般需要多久？</summary>
+          <p>常规审核为 3 个工作日，涉及音乐或影像授权的作品可能延长至 5 个工作日，审核结果会通过站内通知告知。</p>
+        </details>
+        <details>
+          <summary>可以下载视频离线观看吗？</summary>
+          <p>部分官方发布内容开放高清下载，具体以详情页标注为准。下载文件仅限个人观看，不得二次分发。</p>
+        </details>
+        <details>
+          <summary>参加创作营或比赛是否需要费用？</summary>
+          <p>磁力联盟的创作营公开课与年度比赛均为免费参与，任何以平台名义收费的行为均非官方行为，请注意甄别。</p>
+        </details>
+        <details>
+          <summary>品牌合作如何联系？</summary>
+          <p>可通过页脚的合作邮箱提交需求简报，我们会在 5 个工作日内回复，并给出内容方向的初步建议。</p>
+        </details>
+        <details>
+          <summary>发现内容错误或侵权如何反馈？</summary>
+          <p>可在对应内容页使用“反馈”入口提交材料，我们承诺在 48 小时内响应，核实后会进行修正或下架处理。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作墙 + 投稿 -->
+  <section class="cl-section">
+    <div class="cl-wrap">
+      <div class="cl-cta-band">
+        <div>
+          <h2>把你的故事，交给磁力联盟</h2>
+          <p>不论你是第一次拿起相机，还是已经拍了七年，这里都有一块属于你的推荐位。投稿即视为同意内容规范，原创与正版是我们共同的底线。</p>
+        </div>
+        <div class="cl-cta-actions">
+          <button class="cl-btn-primary" id="clUploadBtn2">立即投稿</button>
+          <button class="cl-btn-ghost cl-share">分享本页</button>
+        </div>
+      </div>
+
+      <div style="margin-top:30px;">
+        <div class="cl-section-head">
+          <span class="cl-kicker">Partners</span>
+          <h2>合作品牌与<em>内容伙伴</em></h2>
+        </div>
+        <div class="cl-partners">
+          <div class="cl-partner">光屿影像<span>设备支持</span></div>
+          <div class="cl-partner">慢山书店<span>线下展映</span></div>
+          <div class="cl-partner">南岸制琴<span>声音合作</span></div>
+          <div class="cl-partner">常青木作<span>手作企划</span></div>
+          <div class="cl-partner">河岸咖啡<span>场景支持</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="cl-footer">
+  <div class="cl-wrap">
+    <div class="cl-footer-grid">
+      <div>
+        <div class="cl-brand" style="margin-bottom:12px;">
+          <span class="cl-brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 5l11 7-11 7z" fill="#fff"/>
+            </svg>
+          </span>
+          <span>磁力联盟<small>MAGNET UNION</small></span>
+        </div>
+        <p>磁力联盟官方网站，专注原创高清视频内容的企业级品牌社区。我们以官方标准持续运营，为创作者与观众搭建值得信赖的内容生态。</p>
+        <p>合作邮箱：union@magnet-union.example<br>内容反馈：48 小时内响应</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#videos">精品内容</a></li>
+          <li><a href="#topics">专题企划</a></li>
+          <li><a href="#insight">品牌解析</a></li>
+          <li><a href="#authors">创作者名录</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方</h4>
+        <ul>
+          <li><a href="#dynamics">企业动态</a></li>
+          <li><a href="#faq">帮助中心</a></li>
+          <li><a href="#top">内容规范</a></li>
+          <li><a href="#top">版权声明</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="#top" id="clFooterUpload">投稿上传</a></li>
+          <li><a href="#voices">社区口碑</a></li>
+          <li><a href="#top">创作者扶持计划</a></li>
+          <li><a href="#top">年度评选</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cl-footer-bottom">
+      <span>© 2026 磁力联盟 版权所有 · 持续运营中</span>
+      <span>备案号：示例备案-2026-0001 · 本站内容均为原创或已获授权</span>
+    </div>
+  </div>
+</footer>
+
+<button class="cl-top-btn" id="clTopBtn" aria-label="回到顶部">↑</button>
+<div class="cl-toast" id="clToast" role="status" aria-live="polite"></div>
+
+<!-- 通用弹窗 -->
+<div class="cl-modal" id="clModal">
+  <div class="cl-modal-box">
+    <button class="cl-modal-close" id="clModalClose" aria-label="关闭">×</button>
+    <div id="clModalContent"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var toastEl = document.getElementById('clToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('is-on'); }, 2200);
+  }
+
+  /* 移动端导航折叠 */
+  var burger = document.getElementById('clBurger');
+  var nav = document.getElementById('clNav');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('is-open');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('is-open'); });
+  });
+
+  /* 平滑滚动（页内锚点，预留吸顶偏移由 CSS scroll-padding 处理） */
+  document.querySelectorAll('[data-scroll]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.querySelector(btn.getAttribute('data-scroll'));
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  /* 搜索反馈 */
+  var searchInput = document.getElementById('clSearchInput');
+  var searchFeedback = document.getElementById('clSearchFeedback');
+  var suggestions = ['守夜的第七年','冬叙 第一季','现场收音实战','四平米厨房','榫卯修复','街区摄影','创作者扶持计划','手上有活'];
+  searchInput.addEventListener('input', function(){
+    var q = searchInput.value.trim();
+    if(!q){
+      searchFeedback.classList.remove('is-on');
+      return;
+    }
+    var hits = suggestions.filter(function(s){ return s.indexOf(q) !== -1; });
+    searchFeedback.textContent = hits.length
+      ? '找到 ' + hits.length + ' 条相关：' + hits.slice(0,3).join(' / ')
+      : '暂无完全匹配，试试「人物纪录」或「剪辑」';
+    searchFeedback.classList.add('is-on');
+  });
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      var q = searchInput.value.trim();
+      toast(q ? '正在搜索：' + q : '请输入关键词');
+    }
+  });
+
+  /* 点赞 / 收藏 */
+  document.querySelectorAll('.cl-like').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var liked = btn.classList.toggle('is-liked');
+      var raw = btn.getAttribute('data-like') || '0';
+      var base = parseFloat(raw.replace('万','')) || 0;
+      var unit = raw.indexOf('万') !== -1;
+      var now = liked ? base + 0.1 : base;
+      btn.textContent = (liked ? '♥ 已喜欢 ' : '♥ 喜欢 ') + (unit ? now.toFixed(1) + '万' : Math.round(now));
+      if(unit) btn.setAttribute('data-like', now.toFixed(1) + '万');
+      toast(liked ? '已点赞，感谢支持' : '已取消点赞');
+    });
+  });
+  document.querySelectorAll('.cl-save').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('is-saved');
+      btn.textContent = on ? '★ 已收藏' : '☆ 收藏';
+      toast(on ? '已加入收藏夹' : '已移出收藏夹');
+    });
+  });
+
+  /* 分享：复制链接 + 分享弹窗 */
+  var modal = document.getElementById('clModal');
+  var modalContent = document.getElementById('clModalContent');
+  function openModal(html){
+    modalContent.innerHTML = html;
+    modal.classList.add('is-on');
+  }
+  function closeModal(){
+    modal.classList.remove('is-on');
+    modalContent.innerHTML = '';
+  }
+  document.getElementById('clModalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+
+  document.querySelectorAll('.cl-share').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openModal(
+        '<h3>分享磁力联盟</h3>' +
+        '<p>把这段影像交给同样在意真实的人。</p>' +
+        '<div class="cl-share-row">' +
+          '<button data-copy-share="wechat">微信</button>' +
+          '<button data-copy-share="weibo">微博</button>' +
+          '<button data-copy-share="qq">QQ</button>' +
+          '<button data-copy-share="link">复制链接</button>' +
+        '</div>'
+      );
+      modalContent.querySelectorAll('[data-copy-share]').forEach(function(sb){
+        sb.addEventListener('click', function(){
+          var type = sb.getAttribute('data-copy-share');
+          if(type === 'link'){
+            var link = 'https://magnet-union.example/';
+            if(navigator.clipboard && navigator.clipboard.writeText){
+              navigator.clipboard.writeText(link).then(function(){ toast('链接已复制'); }, function(){ toast('复制失败，请手动复制'); });
+            } else {
+              toast('链接已复制');
+            }
+          } else {
+            toast('已准备分享到' + sb.textContent);
+          }
+        });
+      });
+    });
+  });
+
+  /* 作者信息弹窗 */
+  document.querySelectorAll('.cl-author-open').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name = btn.getAttribute('data-author');
+      var info = btn.getAttribute('data-info');
+      openModal(
+        '<h3>' + name + '</h3>' +
+        '<p>' + info + '</p>' +
+        '<p style="font-size:13px;">磁力联盟官方认证创作者 · 作品均经版权核验</p>' +
+        '<div class="cl-share-row"><button data-close-modal>知道了</button></div>'
+      );
+      modalContent.querySelector('[data-close-modal]').addEventListener('click', closeModal);
+    });
+  });
+
+  /* 投稿弹窗 */
+  function openUpload(){
+    openModal(
+      '<h3>投稿 / 上传作品</h3>' +
+      '<p>填写基本信息，编辑部将在 3 个工作日内联系你。</p>' +
+      '<form id="clUploadForm">' +
+        '<label for="clFormName">创作者昵称</label>' +
+        '<input id="clFormName" type="text" placeholder="例如：纸上风物" required>' +
+        '<label for="clFormTitle">作品标题</label>' +
+        '<input id="clFormTitle" type="text" placeholder="例如：守夜的第七年" required>' +
+        '<label for="clFormDesc">一句话简介</label>' +
+        '<textarea id="clFormDesc" rows="3" placeholder="讲讲这支片子记录了什么人、什么事"></textarea>' +
+        '<div style="margin-top:16px;"><button class="cl-btn-primary" type="submit">提交作品</button></div>' +
+      '</form>'
+    );
+    document.getElementById('clUploadForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      closeModal();
+      toast('投稿已提交，编辑部将尽快联系你');
+    });
+  }
+  document.getElementById('clUploadBtn').addEventListener('click', openUpload);
+  document.getElementById('clUploadBtn2').addEventListener('click', openUpload);
+  document.getElementById('clFooterUpload').addEventListener('click', function(e){ e.preventDefault(); openUpload(); });
+  document.getElementById('clJoinBtn').addEventListener('click', function(){
+    openModal(
+      '<h3>创作者扶持计划 · 第三期</h3>' +
+      '<p>本期开放 20 个名额，提供剪辑指导、设备租借与官方推荐位。报名截止 2026 年 12 月 20 日。</p>' +
+      '<ul style="font-size:13.5px;color:var(--cl-ink-dim);">' +
+        '<li>提交 1 支代表作与 1 份企划大纲</li>' +
+        '<li>入选后参与为期 6 周的创作营</li>' +
+        '<li>完成作品进入磁力联盟官方推荐位</li>' +
+      '</ul>' +
+      '<div class="cl-share-row"><button data-close-modal>了解并关闭</button></div>'
+    );
+    modalContent.querySelector('[data-close-modal]').addEventListener('click', closeModal);
+  });
+
+  /* 数字滚动 */
+  var counters = document.querySelectorAll('[data-count]');
+  var counted = false;
+  function runCounters(){
+    if(counted) return;
+    counted = true;
+    counters.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var start = performance.now();
+      var dur = 1400;
+      function step(now){
+        var p = Math.min((now - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.floor(target * eased);
+        el.textContent = val >= 10000 ? (val / 10000).toFixed(1) + '万' : val.toLocaleString('zh-CN');
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = target >= 10000 ? (target / 10000).toFixed(1) + '万' : target.toLocaleString('zh-CN');
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) runCounters(); });
+    }, {threshold: .3});
+    var statBox = document.querySelector('.cl-hero-stats');
+    if(statBox) io.observe(statBox);
+  } else {
+    runCounters();
+  }
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('clTopBtn');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 520) topBtn.classList.add('is-on');
+    else topBtn.classList.remove('is-on');
+  });
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ESC 关闭弹窗 */
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+})();
+</script>
+</body>
+            </html>
